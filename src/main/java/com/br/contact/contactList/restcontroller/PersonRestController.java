@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ public class PersonRestController extends BaseRestController<PersonDTO>{
 	@Autowired
 	private PersonRestControllerImp personRestControllerImp;
 
+	@CrossOrigin
 	@PostMapping("/person")
 	protected ResponseEntity<?> insert(@RequestBody PersonDTO dto) {
 		try {
@@ -52,6 +54,7 @@ public class PersonRestController extends BaseRestController<PersonDTO>{
 	}
 
 	@Override
+	@CrossOrigin
 	@PutMapping("/person/{id}")
 	protected ResponseEntity<?> update(@RequestBody PersonDTO dto,@PathVariable long id) {
 		try {
@@ -82,6 +85,7 @@ public class PersonRestController extends BaseRestController<PersonDTO>{
 	}
 
 	@Override
+	@CrossOrigin
 	@GetMapping("/person/{id}")
 	protected ResponseEntity<?> findById(@PathVariable long id) {
 		try {
@@ -97,6 +101,7 @@ public class PersonRestController extends BaseRestController<PersonDTO>{
 	}
 
 	@Override
+	@CrossOrigin
 	@GetMapping("/person")
 	protected ResponseEntity<?> findAll() {
 		return ResponseEntity.ok(personRestControllerImp.findAll());

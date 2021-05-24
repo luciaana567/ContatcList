@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ public class ContactRestController extends BaseRestController<ContactDTO>{
 	private PersonRestControllerImp personRestControllerImp;
 
 	@Override
+	@CrossOrigin
 	@PostMapping("/contact")
 	protected ResponseEntity<?> insert(@RequestBody ContactDTO dto) {
 		try {
@@ -51,6 +53,7 @@ public class ContactRestController extends BaseRestController<ContactDTO>{
 	}
 
 	@Override
+	@CrossOrigin
 	@DeleteMapping("/contact/{id}")
 	protected ResponseEntity<?> delete(@PathVariable long id) {
 		//deletar todos os contatos pertecentes aquele usuário
@@ -72,6 +75,7 @@ public class ContactRestController extends BaseRestController<ContactDTO>{
 	}
 
 	@Override
+	@CrossOrigin
 	@PutMapping("/contact/{id}")
 	protected ResponseEntity<?> update(@RequestBody ContactDTO dto,@PathVariable long id) {
 		try {
@@ -100,6 +104,7 @@ public class ContactRestController extends BaseRestController<ContactDTO>{
 	}
 
 	@Override
+	@CrossOrigin
 	@GetMapping("/contact/{id}")
 	protected ResponseEntity<?> findById(@PathVariable long id) {
 		try {
@@ -115,12 +120,13 @@ public class ContactRestController extends BaseRestController<ContactDTO>{
 	}
 
 	@Override
+	@CrossOrigin
 	@GetMapping("/contact")
 	protected ResponseEntity<?> findAll() {
 		return ResponseEntity.ok(contactRestControllerImp.findAll());
 	}	
 	
-	
+	@CrossOrigin
 	@GetMapping("/contact/person/{personId}")
 		protected ResponseEntity<?> findByPerson(@PathVariable long personId) {
 		try {
